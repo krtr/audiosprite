@@ -55,6 +55,11 @@ module.exports = function(files) {
   let offsetCursor = 0
   const wavArgs = ['-ar', opts.samplerate, '-ac', opts.channels, '-f', 's16le']
   const tempFile = mktemp('audiosprite')
+
+  fs.writeFile(tempFile, '', (err) => {
+    if (err) throw err;
+    opts.logger.debug("The file was succesfully saved!");
+  })
   
   opts.logger.debug('Created temporary file', { file: tempFile })
   
